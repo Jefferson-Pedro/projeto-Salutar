@@ -15,6 +15,7 @@ public class FichaPaciente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_ficha", nullable=false)
 	private Integer idFicha;
 	
 	@Column(name = "nome", length = 100, nullable = false)

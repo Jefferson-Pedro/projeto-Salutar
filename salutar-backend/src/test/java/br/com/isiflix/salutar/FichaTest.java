@@ -18,6 +18,7 @@ public class FichaTest {
 	@Test
 	public void shouldCreateFicha() {
 		FichaPaciente f = new FichaPaciente();
+		f.setIdFicha(1);
 		f.setNomePaciente("Jefferson");
 		FichaPaciente res = service.cadastrar(f);
 		assertTrue(res != null && res.getUuId() != null && res.getAtivo() == 1);
