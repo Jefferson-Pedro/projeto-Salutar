@@ -69,7 +69,7 @@ public class FichaPaciente {
 	@Column(name = "diagnostico", columnDefinition = "TEXT")
 	private String diagnostico;
 	
-	@Column(name = "uuId", length = 45)
+	@Column(name = "uuid", length = 45)
 	private String uuId;
 	
 	@Column(name = "link_foto", length = 255)
