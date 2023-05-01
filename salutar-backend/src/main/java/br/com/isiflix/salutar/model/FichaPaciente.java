@@ -75,12 +75,12 @@ public class FichaPaciente {
 	@Column(name = "link_foto", length = 255)
 	private String linkDaFoto;
 	
-	@Column(name = "ativo", length = 1)
-	private int ativo;
+	@Column(name = "ativo")
+	private Integer ativo;
 	
 	
 	//GET E SET
-
+	
 	public int getAtivo() {
 		return ativo;
 	}
