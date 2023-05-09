@@ -22,9 +22,9 @@ public class FichaCrontroller {
 	@GetMapping("/fichas/buscar")
 	 public ResponseEntity<List<FichaPaciente>>recuperarPeloNome(@RequestParam(name="nome") String nome){
 		List<FichaPaciente> lista = service.buscarPorNome(nome);
-		if(lista.size() > 0) {
-			return ResponseEntity.ok(lista);
+			if(lista.size() > 0) {
+				return ResponseEntity.ok(lista);
+			}
+			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.notFound().build();
-	}
 }
