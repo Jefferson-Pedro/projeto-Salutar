@@ -3,6 +3,8 @@ package br.com.isiflix.salutar;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,14 +28,26 @@ public class FichaTest {
 		FichaPaciente res = service.cadastrar(f);
 		assertTrue(res != null && res.getUuId() != null && res.getAtivo() == 1);
 	}
-	/*
+	
 	@Test
 	public void shouldDeleteFicha() {
-		assertTrue(service.excluir(2));
+		assertTrue(service.excluir(8));
 	}
 	
 	@Test
 	public void shouldNotDeleteFicha() {
 		assertFalse(service.excluir(9999999));
-	}*/
+	}
+	
+	@Test
+	public void shouldReturnServeralFicha() {
+		List<FichaPaciente> lista = service.buscarPorNome("a");
+		assertTrue(lista.size() > 0);
+	}
+	
+	@Test
+	public void shouldNotFindFicha() {
+		List<FichaPaciente> lista = service.buscarPorNome("Adamastor");
+		assertTrue(lista.size() == 0);
+	}
 }
