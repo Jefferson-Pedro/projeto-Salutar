@@ -24,6 +24,8 @@ public class Usuario {
 	
 	@Column(name="senha", length=45)
 	private String senha;
+	
+	//GET E SET
 
 	public Integer getId() {
 		return id;
@@ -56,6 +58,12 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
+	}
+	
 	
 	
 }

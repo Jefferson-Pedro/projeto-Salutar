@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import br.com.isiflix.salutar.dao.UsuarioDAO;
 import br.com.isiflix.salutar.model.Usuario;
 import br.com.isiflix.salutar.security.SalutarToken;
+import br.com.isiflix.salutar.security.TokenUtil;
 
 @Component
 public class AuthServiceImpl implements IAuthService{
@@ -25,10 +26,11 @@ public class AuthServiceImpl implements IAuthService{
 	@Override
 	public SalutarToken realizarLogin(Usuario dadosLogin) {
 		Usuario res = dao.findByLogin(dadosLogin.getlogin());
+		System.out.println("DADOS LOGIN" + res.toString());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		if(res != null) {
 			if(encoder.matches(dadosLogin.getSenha(), res.getSenha())){
-				return new SalutarToken("*Jpedro1234*");
+				return TokenUtil.encode(res);
 			}
 		}
 		return null;

@@ -2,13 +2,12 @@ package br.com.isiflix.salutar.security;
 
 import java.io.IOException;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -19,6 +18,17 @@ public class MyFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		//aqui depois vem a validacao!
+		
+		if(request.getHeader("Authorization") != null) {
+			Authentication auth = TokenUtil.decode(request);
+			if(auth != null) {
+				SecurityContextHolder.getContext().setAuthentication(auth);
+			}else {
+				System.out.println("Deu ruim!!");
+				response.setStatus(401);
+				return;
+			}
+		}
 		
 		//Não faz nada, apenas encaminha a requisição.
 		filterChain.doFilter(request, response);
