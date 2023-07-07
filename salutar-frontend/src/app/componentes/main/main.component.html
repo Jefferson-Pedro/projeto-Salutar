@@ -1,1 +1,36 @@
-<p>main works!</p>
+<app-wait-icon *ngIf="loading"></app-wait-icon>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3>Gerenciamento das Fichas do Pacientes</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <label for="keyword">Digite o Paciente a ser pesquisado</label>
+            <div class="input-group mt-2">
+
+                <input type="text" 
+                id="keyword" 
+                class="form-control" 
+                [(ngModel)]="keyword" >
+
+                <span class="input-group-text">
+                    <button class="btn btn-sucess" (click)="pesquisar()">
+                        Pesquisar
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngFor="let item of lista">
+        <div class="col-12">
+            {{item.nomePaciente}}
+        </div>
+    </div>
+</div>
+<button id="adicionar" (click)="adicionar()">
+    <i class="fa-solid fa-user-plus"></i>
+</button>

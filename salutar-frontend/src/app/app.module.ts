@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { MainComponent } from './componentes/main/main.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from  '@angular/common/http';
+import { WaitIconComponent } from './componentes/wait-icon/wait-icon.component';
+import { FichaPacienteComponent } from './componentes/ficha-paciente/ficha-paciente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    WaitIconComponent,
+    FichaPacienteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
